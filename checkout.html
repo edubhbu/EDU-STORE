@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Finalizar Compra</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      background-color: #f9f9f9;
+    }
+
+    .contenedor {
+      max-width: 800px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 10px;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      margin-top: 20px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .resumen, .ticket {
+      margin-top: 30px;
+    }
+
+    .ticket {
+      background: #e6ffe6;
+      padding: 20px;
+      border: 1px solid #28a745;
+      border-radius: 5px;
+    }
+
+    .oculto {
+      display: none;
+    }
+
+    .codigo-oxxo {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .codigo-oxxo img {
+      width: 300px;
+      height: auto;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="contenedor">
+    <h2>Datos del envío</h2>
+    <form id="formulario-compra">
+      <label>Nombre completo</label>
+      <input type="text" id="nombre" required>
+
+      <label>Dirección</label>
+      <textarea id="direccion" required></textarea>
+
+      <label>Ciudad</label>
+      <input type="text" id="ciudad" required>
+
+      <label>Teléfono</label>
+      <input type="tel" id="telefono" required>
+
+      <label>Método de pago</label>
+      <select id="metodo-pago" required>
+        <option value="">Selecciona una opción</option>
+        <option value="tarjeta">Tarjeta de crédito</option>
+        <option value="paypal">PayPal</option>
+        <option value="oxxo">OXXO</option>
+      </select>
+
+      <!-- Campos para tarjeta -->
+      <div id="datos-tarjeta" class="oculto">
+        <label>Número de tarjeta</label>
+        <input type="text" placeholder="0000 0000 0000 0000" maxlength="19">
+
+        <label>Nombre en la tarjeta</label>
+        <input type="text">
+
+        <label>Fecha de vencimiento</label>
+        <input type="month">
+
+        <label>Código CVV</label>
+        <input type="text" maxlength="4">
+      </div>
+
+      <!-- Campo para PayPal -->
+      <div id="datos-paypal" class="oculto">
+        <label>Correo electrónico de PayPal</label>
+        <input type="email">
+      </div>
+
+      <!-- Campo para OXXO -->
+      <div id="datos-oxxo" class="oculto">
+        <p>Al finalizar se generará un código de barras que podrás escanear en OXXO.</p>
+      </div>
+
+      <button type="submit">Confirmar compra</button>
+    </form>
+
+    <div class="resumen" id="resumen-compra">
+      <h2>Resumen del carrito</h2>
+      <div id="productos-resumen"></div>
+      <p>Total a pagar: $<span id="total-final">0.00</span> MXN</p>
+
+    </div>
+
+    <div class="ticket" id="ticket-final" style="display: none;">
+      <h2>¡Compra finalizada con éxito!</h2>
+      <p>Gracias por tu compra, <strong id="nombre-cliente"></strong>.</p>
+      <p>Tu número de seguimiento es: <strong id="tracking-id"></strong></p>
+      <p>Tu pedido llegará entre <strong id="dias-envio"></strong> días hábiles.</p>
+
+      <!-- Código de barras para OXXO -->
+      <div class="codigo-oxxo" id="oxxo-barcode" style="display: none;">
+        <p><strong>Escanea este código en OXXO para realizar tu pago:</strong></p>
+        <img src="https://api.qrserver.com/v1/create-qr-code/?data=OXXO-PAGO-1234567890&size=300x100" alt="Código OXXO">
+        <p><small>Código: OXXO-PAGO-1234567890</small></p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+    const resumen = document.getElementById("productos-resumen");
+    const totalFinal = document.getElementById("total-final");
+    const form = document.getElementById("formulario-compra");
+    const ticket = document.getElementById("ticket-final");
+    const oxxoBarcode = document.getElementById("oxxo-barcode");
+
+    let total = 0;
+
+    carrito.forEach(producto => {
+      const div = document.createElement("div");
+      const precio = parseFloat(producto.precio);
+      div.innerHTML = `<p>${producto.nombre} - $${precio.toFixed(2)} MXN</p>`;
+      resumen.appendChild(div);
+      total += precio;
+    });
+
+    totalFinal.textContent = total.toFixed(2);
+
+    // Mostrar campos de pago según método
+    const metodoPago = document.getElementById("metodo-pago");
+    const tarjeta = document.getElementById("datos-tarjeta");
+    const paypal = document.getElementById("datos-paypal");
+    const oxxo = document.getElementById("datos-oxxo");
+
+    metodoPago.addEventListener("change", () => {
+      tarjeta.classList.add("oculto");
+      paypal.classList.add("oculto");
+      oxxo.classList.add("oculto");
+
+      if (metodoPago.value === "tarjeta") {
+        tarjeta.classList.remove("oculto");
+      } else if (metodoPago.value === "paypal") {
+        paypal.classList.remove("oculto");
+      } else if (metodoPago.value === "oxxo") {
+        oxxo.classList.remove("oculto");
+      }
+    });
+
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const nombreCliente = document.getElementById("nombre").value;
+      const trackingId = "EDU-" + Math.floor(100000 + Math.random() * 900000);
+      const dias = Math.floor(Math.random() * 3) + 3;
+
+      document.getElementById("nombre-cliente").textContent = nombreCliente;
+      document.getElementById("tracking-id").textContent = trackingId;
+      document.getElementById("dias-envio").textContent = dias;
+
+      // Mostrar código de OXXO si se eligió ese método
+      if (metodoPago.value === "oxxo") {
+        oxxoBarcode.style.display = "block";
+      }
+
+      ticket.style.display = "block";
+      form.style.display = "none";
+      localStorage.removeItem("carrito");
+    });
+  window.onload = function() {
+    const total = localStorage.getItem("totalCompra") || "0.00";
+    document.getElementById("total-final").textContent = total;
+
+    const inputTotal = document.getElementById("total-oculto");
+    if (inputTotal) {
+      inputTotal.value = total;
+    }
+  };
+
+  </script>
+
+</body>
+</html>

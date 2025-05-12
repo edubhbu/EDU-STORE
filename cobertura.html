@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Verifica tu Cobertura de Envío</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f4f6f9;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: 80px auto;
+      background: white;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    h1 {
+      color: #333;
+      margin-bottom: 30px;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+      margin-bottom: 20px;
+      box-sizing: border-box;
+    }
+
+    button {
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      padding: 15px 25px;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .resultado {
+      margin-top: 25px;
+      font-size: 18px;
+      color: #444;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>¿Hacemos envíos a tu zona?</h1>
+    <input type="text" id="codigoPostal" placeholder="Ingresa el lugar de origen o estado">
+    <button onclick="verificarCobertura()">Verificar</button>
+    <div class="resultado" id="resultado"></div>
+  </div>
+
+  <script>
+    function verificarCobertura() {
+  const codigo = document.getElementById('codigoPostal').value.trim();
+  const resultado = document.getElementById('resultado');
+
+  if (codigo === '') {
+    resultado.textContent = 'Por favor ingresa un código postal.';
+    return;
+  }
+
+  fetch(`http://localhost:3000/api/cobertura/${codigo}`)
+    .then(response => response.json())
+    .then(data => {
+      if (data.cobertura) {
+        resultado.textContent = '¡Sí! Hacemos envíos a tu zona. 🚚';
+        resultado.style.color = 'green';
+      } else {
+        resultado.textContent = 'Lo sentimos, aún no llegamos a tu zona. 😞';
+        resultado.style.color = 'red';
+      }
+    })
+    .catch(error => {
+      resultado.textContent = 'Error al verificar la cobertura.';
+      resultado.style.color = 'orange';
+    });
+}
+
+  </script>
+
+</body>
+</html>

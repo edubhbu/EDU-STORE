@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tegnologia. Computadoras</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f5f7fa;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      padding: 40px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .product-card {
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .product-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .product-image {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .product-content {
+      padding: 20px;
+    }
+
+    .product-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin: 0 0 10px;
+    }
+
+    .product-price {
+      font-size: 1rem;
+      color: #27ae60;
+      margin-bottom: 10px;
+    }
+
+    .product-description {
+      font-size: 0.9rem;
+      color: #555;
+      line-height: 1.4;
+    }
+
+    @media (max-width: 600px) {
+      .product-content {
+        padding: 16px;
+      }
+    }
+    .btn-soporte {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 14px 24px;
+    background-color: #2c3e50;
+    color: #fff;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.btn-soporte:hover {
+    background-color: #1a242f;
+} 
+.boton-soporte {
+      background-color: #4CAF50; /* Verde */
+      border: none;
+      color: white;
+      padding: 15px 30px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.product-card {
+  padding: 20px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+}
+.cart-button {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #ff9900;
+  color: white;
+  font-size: 24px;
+  padding: 14px;
+  border-radius: 50%;
+  text-decoration: none;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  z-index: 999;
+}
+
+.cart-button:hover {
+  background-color: #e68a00;
+  transform: scale(1.1) rotate(5deg);
+}
+
+.cart-count {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background-color: #e60023;
+  color: white;
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 50%;
+  font-weight: bold;
+}
+.Logo-esquina {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 100px;
+            height: auto;
+            z-index: 1000;
+        }
+
+  </style>
+</head>
+<body>
+  <img src="edustore logo.jpg" class="Logo-esquina">
+
+  <a href="carrito.html" class="cart-button" title="Ver carrito">
+    🛒
+    <span class="cart-count"></span>
+  </a>
+  <section class="product-grid">
+    <div class="product-card">
+        <a href="productos/acer aspire 16.html" class="card-link">
+      <img class="product-image" src="acer aspire lite 16.jpg" alt="Producto 1">
+      <div class="product-content">
+        <h3 class="product-title">Acer Laptop Aspire Lite 16</h3>
+        <p class="product-price">$12,999</p>
+        <p class="product-description">" WUXGA Core i7 12va 10 Núcleos | Panel IPS | 16GB RAM | 512GB SSD | Intel HD Graphics | Garantia en México</p>
+    </a>
+    </div>
+    </div>
+
+    <div class="product-card">
+        <a href="productos/Dell laptop inspiron 3535.html" class="card-link">
+      <img class="product-image" src="https://m.media-amazon.com/images/I/61TJcCzVkcL._AC_SY450_.jpg" alt="Producto 2">
+      <div class="product-content">
+        <h3 class="product-title">Dell Laptop Inspiron 3535 </h3>
+        <p class="product-price">$7,899</p>
+        <p class="product-description">15.6" Full HD, AMD Ryzen 5 7520U 2.80GHz, 8GB, 512GB SSD, Windows 11 Home 64-bit, Español, Plata</p>
+      </div>
+    </a>
+    </div>
+
+    <div class="product-card">
+        <a href="productos/Acer Laptop Gaming Nitro 5 Modelo 2024.html" class="card-link">
+      <img class="product-image" src="https://m.media-amazon.com/images/I/61dHek29gML._AC_SX466_.jpg" alt="Producto 3">
+      <div class="product-content">
+        <h3 class="product-title">Acer Laptop Gaming Nitro 5 Modelo 2024 </h3>
+        <p class="product-price">$13,499</p>
+        <p class="product-description">Core i5 12th | Nvidia GeForce RTX 2050 | 8 Núcleos | 8GB | 512GB SSD | Panel IPS de 15.6" FHD.</p>
+      </div>
+    </a>
+    </div>
+    <div class="product-card">
+        <a href="productos/XTREME PC GAMING.html" class="card-link">
+        <img class="product-image" src="productos/pc gamer.jpg" alt="Producto 2">
+        <div class="product-content">
+          <h3 class="product-title">XTREME PC GAMING Computadora gamer</h3>
+          <p class="product-price">$11,899</p>
+          <p class="product-description">xtpcr716gbrenoirmcw 23.8 pulgadas Full HD AMD Ryzen 7 AMD Radeon Graphics 16 GB RAM 500 GB SSD.</p>
+        </div>
+    </a>
+      </div>
+      <div class="product-card">
+        <a href="productos/Laptop HP.html" class="card-link">
+        <img class="product-image" src="productos/laptop hp.jpeg" alt="Producto 3">
+        <div class="product-content">
+          <h3 class="product-title">Laptop Hp 14-dq0518la Celeron N4120</h3>
+          <p class="product-price">$4,157</p>
+          <p class="product-description">Ram 4gb Ssd 128gb W11h Color Plateado.</p>
+        </div>
+    </a>
+    </div>
+        <div class="product-card">
+            <a href="productos/laptop asus.html" class="card-link">
+            <img class="product-image" src="productos/laptop asus.jpeg" alt="Producto 2">
+            <div class="product-content">
+              <h3 class="product-title">Laptop Asus </h3>
+              <p class="product-price">$2,999</p>
+              <p class="product-description">14 Pulgadas 4gb Ram 64Gb EMMC Intel Celeron N4500 W11 Color Azul Marino</p>
+            </div>
+        </a>
+        </div>
+          </div>
+      
+          <div class="product-card">
+            <a href="productos/Lenovo ideapad.html" class="card-link">
+            <img class="product-image" src="productos/ideapad3.png" alt="Producto 3">
+            <div class="product-content">
+              <h3 class="product-title">Laptop Lenovo Ideapad 3</h3>
+              <p class="product-price">$12,499</p>
+              <p class="product-description">Intel Core i7 13th Gen 16GB RAM 512GB SSD.</p>
+            </div>
+            </a>
+        </div>
+            <div class="product-card">
+                <a href="productos/laptop asus strix.html" class="card-link">
+                <img class="product-image" src="https://m.media-amazon.com/images/I/81GrCeuCzxL._AC_SX450_.jpg" alt="Producto 2">
+                <div class="product-content">
+                  <h3 class="product-title">ASUS ROG Strix G16 (2024)</h3>
+                  <p class="product-price">$30,947</p>
+                  <p class="product-description">Laptop para Juegos, visualización FHD 16:10 de 16 Pulgadas, visualización FHD 165Hz, NVIDIA® GeForce RTX™ 4060, Intel Core i7-13650HX, DDR5 de 16 GB, SSD PCIe Gen4 de 1 TB,.</p>
+                </div>
+                </a>
+              </div>
+              <div class="product-card">
+                <a href="productos/Mac os.html" class="card-link">
+                <img class="product-image" src="https://m.media-amazon.com/images/I/41c4zscYodL._AC_SX466_.jpg" alt="Producto 2">
+                <div class="product-content">
+                  <h3 class="product-title">Laptop MacBook Pro 2024 de Apple</h3>
+                  <p class="product-price">$59,999</p>
+                  <p class="product-description"> MacBook Pro 2024 de Apple con Chip M4 Pro, CPU de 14 núcleos y GPU de 20 núcleos : Diseñada para Apple Intelligence, Pantalla de 16.2 Pulgadas, 24 GB de Memoria, 512 GB - Negro Espacial</p>
+                </div>
+                </a>
+              </div>
+              <div class="product-card">
+                <a href="productos/HP Laptop Gaming OMEN.html" class="card-link">
+                <img class="product-image" src="https://m.media-amazon.com/images/I/71qnRFIv9IL._AC_SY450_.jpg" alt="Producto 2">
+                <div class="product-content">
+                  <h3 class="product-title">HP Laptop Gaming OMEN</h3>
+                  <p class="product-price">$32,866</p>
+                  <p class="product-description">16-wd0012la, Intel Core i7, 16 GB RAM, 1 TB SSD, 16.1", FHD, NVIDIA GeForce RTX 4060 (8GB), Windows 11 Home, Teclado en Español, Garantía Mexico, Negro Sombra.</p>
+                </div>
+                </a>
+              </div>
+              
+                
+  </section>
+</body>
+</html>

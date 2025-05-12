@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicios | EDU STORE </title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+        }
+
+        .service-card h2 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+
+        .service-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: #2980b9;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #1c5980;
+        }
+
+        .Logo-esquina {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 100px;
+            height: auto;
+            z-index: 1000;
+        }
+        .boton-inicio {
+      background-color: #4CAF50; /* Verde */
+      border: none;
+      color: white;
+      padding: 15px 30px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .boton-inicio:hover {
+      background-color: #45a049;
+    }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="pagina edu store.html" class="boton-inicio">inicio</a>
+        <img src="edustore logo.jpg" class="Logo-esquina">
+            <h1>Nuestros Servicios</h1>
+        <p>Soluciones confiables para tus compras en línea</p>
+    </header>
+
+    <section class="container">
+        <div class="service-card">
+            <h2>Venta de Productos</h2>
+            <p>Gran catálogo de artículos con garantía y entrega segura. Encuentra lo que necesitas a un precio justo.</p>
+            <a href="pagina edu store.html#Productoss" class="btn">Ver productos</a>
+        </div>
+
+        <div class="service-card">
+            <h2>Asesoría Personalizada</h2>
+            <p>Te orientamos para que tomes la mejor decisión de compra. Atención vía chat o videollamada.</p>
+            <a href="redes sociales.html" class="btn">Solicitar asesoría</a>
+        </div>
+
+        <div class="service-card">
+            <h2>Envíos Rápidos</h2>
+            <p>Entregas entre 24 y 72 horas. Seguimiento en tiempo real y cobertura nacional.</p>
+            <a href="carrito.html" class="btn">Consultar cobertura</a>
+        </div>
+
+        <div class="service-card">
+            <h2>Soporte y Garantía</h2>
+            <p>Asistencia postventa y respaldo total. Resolvemos cualquier inconveniente con rapidez.</p>
+            <a href="formulario.html" class="btn">Contactar soporte</a>
+        </div>
+    </section>
+
+    <footer>
+        &copy; EDU STORE | Todos los derechos reservados
+    </footer>
+</body>
+</html>

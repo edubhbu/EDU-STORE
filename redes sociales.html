@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Redes Sociales - EDU STORE</title>
+    <!-- Fuente moderna y Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: #f5f7fa;
+            color: #333;
+        }
+
+        .social-section {
+            max-width: 600px;
+            margin: 60px auto;
+            padding: 30px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+            text-align: center;
+        }
+
+        .social-section h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #ecf0f1;
+            color: #2c3e50;
+            font-size: 22px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-icons a:hover {
+            background-color: #2c3e50;
+            color: #ffffff;
+        }
+
+        /* Colores específicos por red */
+        .facebook:hover { background-color: #3b5998; }
+        .instagram:hover { background-color: #e4405f; }
+        .twitter:hover { background-color: #1da1f2; }
+        .whatsapp:hover { background-color: #25d366; }
+        .email:hover { background-color: #f39c12; }
+        
+       .fondo {
+        position:fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 80%;
+        background: url(edustore\ logo.jpg);
+        background-position: center center;
+        background-size: cover;
+        opacity: 10;
+        z-index: -1;
+    }
+    .boton-inicio {
+      background-color: #4CAF50; /* Verde */
+      border: none;
+      color: white;
+      padding: 15px 30px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .boton-inicio:hover {
+      background-color: #45a049;
+    }
+    </style>
+</head>
+<body>
+    <div class="fondo"></div>
+
+<div class="social-section">
+    <h2>¡Conecta con nosotros!</h2>
+    <div class="social-icons">
+        <a href="https://www.facebook.com/profile.php?id=61566010692681" class="facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/eddu___store?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="instagram eddu_store" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://wa.me/9931057133" class="whatsapp" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=ec1079587@gmail.com" class="email"><i class="fas fa-envelope"></i></a>
+    </div>
+    <a href="pagina edu store.html" class="boton-inicio">inicio</a>
+</div>
+
+</body>
+</html>

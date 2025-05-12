@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Acer Laptop Aspire Lite 16</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+    }
+
+    .container {
+      display: flex;
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 20px;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .gallery {
+      flex: 1 1 40%;
+      max-width: 500px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .main-image {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: opacity 0.3s ease-in-out;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+    .thumbnails {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .thumbnails img {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 6px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: border 0.3s;
+}
+
+    .thumbnails img.active,
+    .thumbnails img:hover {
+      border: 2px solid #007bff;
+    }
+
+    .details {
+      flex: 1 1 55%;
+      background: #fff;
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    }
+
+    .details h1 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    .price {
+      color: #27ae60;
+      font-size: 1.5rem;
+      margin: 10px 0;
+    }
+
+    .description {
+      margin: 20px 0;
+      color: #444;
+      line-height: 1.5;
+    }
+
+    .specs {
+      background-color: #f2f2f2;
+      padding: 20px;
+      border-radius: 8px;
+      margin-top: 20px;
+    }
+
+    .specs ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .specs li {
+      padding: 5px 0;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .btn-buy {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 20px;
+      background-color: #ff9900;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+
+    .btn-buy:hover {
+      background-color: #e68a00;
+    }
+
+    .reviews {
+      margin-top: 40px;
+    }
+
+    .review {
+      background: #fafafa;
+      padding: 15px;
+      margin-bottom: 10px;
+      border-left: 4px solid #3498db;
+      border-radius: 5px;
+    }
+    .cart-button {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #ff9900;
+  color: white;
+  font-size: 24px;
+  padding: 14px;
+  border-radius: 50%;
+  text-decoration: none;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  z-index: 999;
+}
+
+.cart-button:hover {
+  background-color: #e68a00;
+  transform: scale(1.1) rotate(5deg);
+}
+
+.cart-count {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background-color: #e60023;
+  color: white;
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 50%;
+  font-weight: bold;
+}
+
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="gallery">
+    <img id="main-image" class="main-image" src="https://m.media-amazon.com/images/I/51CMM4fpQtL._AC_SL1215_.jpg" alt="Acer Laptop Aspire Lite 16">
+
+    <div class="thumbnails">
+      <img src="https://m.media-amazon.com/images/I/51MZUePm+SL._AC_SX466_.jpg" alt="1" class="thumb active" onclick="changeImage(this)">
+      <img src="https://m.media-amazon.com/images/I/41vgkIiqcML._AC_SY450_.jpg" alt="2" class="thumb" onclick="changeImage(this)">
+      <img src="https://m.media-amazon.com/images/I/71HDRVjWddL._AC_SX466_.jpg" alt="3" class="thumb" onclick="changeImage(this)">
+      <img src="https://m.media-amazon.com/images/I/71KSr1DkHmL._AC_SL1500_.jpg" alt="4" class="thumb" onclick="changeImage(this)">
+      <img src="https://m.media-amazon.com/images/I/51CMM4fpQtL._AC_SL1215_.jpg" alt="4" class="thumb" onclick="changeImage(this)">
+    </div>
+  </div>
+ <a href= "carrito.html" class="cart-button" title="Ver carrito">
+    🛒
+    <span class="cart-count"></span>
+  </a>
+  
+
+  <div class="details">
+    <h1>Acer Laptop Aspire Lite 16</h1>
+    <p class="price">$12,999.</p>
+    <p class="description">
+        WUXGA Core i7 12va 10 Núcleos | Panel IPS | 16GB RAM | 512GB SSD | Intel HD Graphics | Garantia en México
+    </p>
+
+    <div class="specs">
+      <h3>Especificaciones:</h3>
+      <ul>
+        <li>Marca	acer</li>
+        <li> Nombre del modelo	Aspire Lite 16</li>
+        <li>Color: Gris</li>
+        <li>Modelo de CPU	Core i7-1255U</li>
+        <li>Tamaño de la memoria RAM instalada	16 GB</li>
+        <li>Sistema operativo	Windows 11 Home</li>
+        <li>Característica especial	Portátil</li>
+        <li> Descripción de la tarjeta gráfica	Integrada:Intel, Tipo de RAM para gráficos Shared
+            Interfaz de la tarjeta gráfica Integrado</li>
+        <li> Velocidad de CPU	4,7 GHz</li>
+        <li>almacenamiento de 512GB en un disco de estado solido (SSD) PCle NVMe</li>
+        <li>Fecha de lanzamiento	21 junio 2024</li>
+      </ul>
+    </div>
+<button onclick='agregarAlCarrito({
+  id: Date.now(),
+  nombre: "Acer Laptop Aspire Lite 16",
+  precio: 12999,
+  imagen: "https://m.media-amazon.com/images/I/51CMM4fpQtL._AC_SL1215_.jpg"
+})'>Agregar al carrito</button>
+
+    <a href="checkout.html" class="btn-buy">Comprar ahora</a> 
+    <div class="reviews">
+        <h3>Reseñas de clientes:</h3>
+      
+        <div class="review">
+          <strong>Lucía M.</strong><br>
+          ⭐⭐⭐⭐⭐<br>
+          “El producto llegó en perfectas condiciones y antes de lo esperado. Excelente calidad, se nota que está bien fabricado.”
+        </div>
+      
+        <div class="review">
+          <strong>Javier R.</strong><br>
+          ⭐⭐⭐⭐☆<br>
+          “Muy buen artículo. Cumple con lo prometido, aunque el empaque podría mejorar un poco.”
+        </div>
+      
+        <div class="review">
+          <strong>Sofía G.</strong><br>
+          ⭐⭐⭐⭐⭐<br>
+          “Lo compré para regalar y quedó encantada. Viene con todo lo que dice en la descripción y funciona perfecto.”
+        </div>
+      
+        <div class="review">
+          <strong>Daniel T.</strong><br>
+          ⭐⭐⭐☆☆<br>
+          “El producto es funcional, pero me hubiera gustado que incluyera instrucciones más claras.”
+        </div>
+      
+        <div class="review">
+          <strong>Fernanda C.</strong><br>
+          ⭐⭐⭐⭐⭐<br>
+          “Excelente compra. Buen precio, buena calidad y el envío fue rápido. Volvería a comprar sin dudar.”
+        </div>
+      
+        <div class="review">
+          <strong>Rodrigo L.</strong><br>
+          ⭐⭐☆☆☆<br>
+          “No era lo que esperaba. El tamaño es más pequeño de lo que imaginaba, aunque funciona bien.”
+        </div>
+      
+      </div>
+  </div>
+</div>
+
+<script>
+  function changeImage(el) {
+    const mainImg = document.getElementById('main-image');
+    const thumbs = document.querySelectorAll('.thumb');
+    
+    // Quitar clase activa de todas
+    thumbs.forEach(thumb => thumb.classList.remove('active'));
+
+    // Poner clase activa a la seleccionada
+    el.classList.add('active');
+
+    // Animar el cambio
+    mainImg.style.opacity = 0;
+    setTimeout(() => {
+      mainImg.src = el.src;
+      mainImg.style.opacity = 1;
+    }, 200);
+  }
+  function agregarAlCarrito(producto) { 
+    let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+    const existe = carrito.find(item => item.id === producto.id);
+
+    if (existe) {
+      existe.cantidad += 1;
+    } else {
+      carrito.push({ ...producto, cantidad: 1 });
+    }
+
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+    alert(`${producto.nombre} se agregó al carrito`);
+  }
+  function agregarAlCarrito(producto) {
+    let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+    // Agrega siempre un nuevo objeto, aunque sea igual
+    carrito.push({ ...producto, cantidad: 1 });
+
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+    alert(`${producto.nombre} se agregó al carrito`);
+  }
+</script>
+
+</body>
+</html>
+

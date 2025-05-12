@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>EDU STORE</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', sans-serif; background: #f4f4f4; color: #333; }
+    header {
+      background: #222;
+      color: white;
+      padding: 15px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+    }
+    header img { width: 50px; height: 50px; }
+    header h1 { margin-left: 10px; font-size: 24px; }
+    nav ul { list-style: none; display: flex; gap: 20px; }
+    nav a { text-decoration: none; color: white; font-size: 16px; }
+    nav a:hover { color: #00c3ff; }
+    .hero { background: #00c3ff; color: white; text-align: center; padding: 50px 20px; }
+    .section { padding: 40px 20px; max-width: 1200px; margin: auto; }
+    .section h2 { margin-bottom: 20px; text-align: center; color: #00c3ff; }
+    .products { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
+    .product-card {
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      width: 250px;
+      text-align: center;
+      padding: 15px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .product-card img { width: 100%; height: 180px; object-fit: cover; }
+    .product-card h3 { margin: 15px 0 10px; }
+    .product-card button {
+      background: #00c3ff;
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .contact-form button {
+      background: #00c3ff;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+    }
+    footer {
+      background: #222;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    .socials a {
+      color: white;
+      margin: 0 10px;
+      font-size: 20px;
+    }
+     .floating-boxes {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+    }
+
+    .floating-box {
+      background-color: #00c3ff;
+      color: white;
+      padding: 20px;
+      margin: 10px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+      width: 150px;
+      height: 150px;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .floating-box:hover {
+      transform: scale(1.1);
+      opacity: 0.9;
+    }
+
+    .floating-box i {
+      font-size: 40px;
+      margin-bottom: 10px;
+    }
+    .service-info {
+      display: none;
+      position: fixed;
+      bottom: 100px;
+      right: 20px;
+      background-color: #fff;
+      padding: 20px;
+      width: 300px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
+      color: #333;
+      font-size: 16px;
+      max-height: 300px;
+      overflow-y: auto;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .service-info.show {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .service-info h4 {
+      color: #00c3ff;
+      margin-bottom: 10px;
+    }
+    .product-type-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.product-type-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  width: 220px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease;
+}
+
+.product-type-card:hover {
+  transform: translateY(-5px);
+}
+
+.product-type-card i {
+  font-size: 40px;
+  color: #00c3ff;
+  margin-bottom: 15px;
+}
+
+.product-type-card h3 {
+  margin-bottom: 10px;
+  font-size: 20px;
+  color: #00c3ff;
+}
+.btn-soporte {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 14px 24px;
+    background-color: #2c3e50;
+    color: #fff;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.btn-soporte:hover {
+    background-color: #1a242f;
+} 
+.boton-soporte {
+      background-color: #4CAF50; /* Verde */
+      border: none;
+      color: white;
+      padding: 15px 30px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .cart-button {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #ff9900;
+  color: white;
+  font-size: 24px;
+  padding: 14px;
+  border-radius: 50%;
+  text-decoration: none;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  z-index: 999;
+}
+
+.cart-button:hover {
+  background-color: #e68a00;
+  transform: scale(1.1) rotate(5deg);
+}
+
+.cart-count {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background-color: #e60023;
+  color: white;
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 50%;
+  font-weight: bold;
+}
+.faq-accordion {
+  max-width: 800px;
+  margin: 60px auto;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+.faq-accordion h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.accordion-item {
+  border-bottom: 1px solid #ddd;
+}
+
+.accordion-header {
+  background: none;
+  border: none;
+  outline: none;
+  width: 100%;
+  text-align: left;
+  padding: 15px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  position: relative;
+  transition: background 0.3s ease;
+}
+
+.accordion-header::after {
+  content: "+";
+  position: absolute;
+  right: 20px;
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+.accordion-header.active::after {
+  content: "−";
+  transform: rotate(180deg);
+}
+
+.accordion-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+  padding: 0 15px;
+}
+
+.accordion-body p {
+  margin: 15px 0;
+}
+.card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.product-card {
+  padding: 20px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+}
+
+
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <div style="display: flex; align-items: center;">
+      <img src="edustore logo.jpg" alt="Logo EDU STORE"/>
+      <h1>EDU STORE</h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#inicio"><i class="fas fa-home"></i> Inicio</a></li>
+        <li><a href="servicios.html"><i class="fas fa-concierge-bell"></i> Servicios</a></li>
+        <li><a href="redes sociales.html"><i class="fas fa-camera"></i> Redes sociales y contacto</a></li>
+        <li><a href="#acerca"><i class="fas fa-info-circle"></i> Acerca de</a></li>
+        <li><a href="#faq"><i class="fas fa-question-circle"></i> FAQ</a></li>
+        <li><a href="#contacto"><i class="fas fa-key"></i> Contacto soporte tecnico</a></li>
+      </ul>
+    </nav>
+    <div style="position: relative;">
+        <div class="cart-icon" onclick="toggleCart()">
+          <i class="fas fa-computer"></i>
+          <span class="count" id="cart-count"></span>
+        </div>
+        <div class="cart-dropdown" id="cart-dropdown">
+          <ul id="cart-items">
+            <!-- Productos se añaden aquí -->
+            <a href="carrito.html" class="cart-button" title="Ver carrito">
+              🛒
+              <span class="cart-count"></span>
+            </a>
+            
+          </ul>
+        </div>
+      </div>
+      
+  </header>
+  <section class="section" id="Productos">
+    <h2>Sección de Servicios y Productos</h2>
+    <p style="text-align: center;">Explora los diferentes tipos de productos de computo y servicios que ofrecemos en EDU STORE de la mejor calidad:</p>
+    
+    <a href="compra.html" class="card-link">
+    <div class="product-type-grid">
+      <div class="product-type-card">
+        <div style="font-size: 40px;">💻</div>
+        <h3>Tecnologia</h3>
+        <p>computadoras.</p>
+      </div>
+    </a>
+    <a href="index.html" class="card-link">
+      <div class="product-type-card">
+        <div style="font-size: 40px;">💻📲</div>
+        <h3>Asistencia Remota</h3>
+        <p>Asistencia remota y ayuda en soporte tecnico software con tu dispositivo de computo.</p>
+      </div>
+    </a>
+    </div>
+  </section>
+  <section class="faq-accordion" id="faq" >
+    <h2> Preguntas Frecuentes</h2>
+  
+    <div class="accordion-item">
+      <button class="accordion-header">📦 ¿Cuánto tarda en llegar mi pedido?</button>
+      <div class="accordion-body">
+      <p>El tiempo de entrega depende de tu ubicación, pero normalmente los envíos se entregan entre 2 y 5 días hábiles. En zonas rurales puede tomar un poco más.</p>
+    </div>
+  </div>
+  
+    <div class="accordion-item">
+      <button class="accordion-header">💳 ¿Qué métodos de pago aceptan?</button>
+      <div class="accordion-body">
+      <p>Aceptamos tarjetas de crédito, débito, transferencias bancarias, pagos en efectivo mediante OXXO (México) y plataformas como PayPal o MercadoPago (según disponibilidad en tu país).</p>
+    </div>
+  </div>
+    <div class="accordion-item">
+      <button class="accordion-header">🔁 ¿Puedo devolver un producto?</button>
+      <div class="accordion-body">
+      <p>Sí. Aceptamos devoluciones pero va dependiendo del producto computadoras se les da garantia de 3 meses-5 meses dependiendo el modelo siempre y cuando esté en perfecto estado y con su empaque original.</p>
+    </div>
+  </div>
+    <div class="accordion-item">
+      <button class="accordion-header">🔒 ¿Es segura mi información personal?</button>
+      <div class="accordion-body">
+      <p>Tu información está completamente protegida. Usamos cifrado SSL y no compartimos tus datos con terceros. Tu seguridad es nuestra prioridad.</p>
+    </div>
+  </div>
+    <div class="accordion-item">
+      <button class="accordion-header">📍 ¿Realizan envíos a todo el país?</button>
+      <div class="accordion-body">
+      <p>Sí, realizamos envíos a todo el país. Incluso puedes consultar el estado de tu envío mediante nuestro rastreador en línea, en el area de servicios tenemos la opcion de consultar cobertura y consultar tu direccion para verificar si hacemos envios a a tu domicilio.</p>
+    </div>
+  </div>
+    <div class="accordion-item">
+      <button class="accordion-header">📧 ¿Cómo me contacto con ustedes si tengo un problema?</button>
+      <div class="accordion-body">
+      <p>Puedes escribirnos a nuestro correo de soporte o usar el formulario de contacto en la página. También atendemos vía redes sociales durante el horario laboral, en la seccion de <a href="redes sociales.html" class="btn-soportes">Redes sociales</a></p>
+      .</p>
+    </div>
+  </div>
+    <div class="accordion-item">
+      <button class="accordion-header">🎁 ¿Los productos vienen con garantía?</button>
+      <div class="accordion-body">
+      <p>Sí, todos nuestros productos tienen garantía de fábrica por defectos de origen. La duración varía según el producto, y puedes consultarla en la descripción, por lo regulas todas nuestras computadoras tienen garantia de 3-5 meses.</p>
+    </div>
+  </div>
+    <div class="accordion-item">
+      <button class="accordion-header">🕐 ¿Cuál es el horario de atención al cliente?</button>
+      <div class="accordion-body">
+      <p>Atendemos de lunes a viernes de 9:00 a.m. a 6:00 p.m. y sábados de 9:00 a.m. a 2:00 p.m. (hora local). Fuera de ese horario puedes escribirnos por correo y te responderemos lo antes posible.</p>
+    </div>
+  </div>
+    <div class="accordion-item">
+      <button class="accordion-header"> ¿Que otra atencion ofrecen?</button>
+      <div class="accordion-body">
+      <p>Ofrecemos la atencion en soporte tecnico con los mejores tecnicos y especializados en ayudarte con todo tipo de problemas o dificultades en tu dipositivo de computo con la mejor atencion posible, te interesaran los servicios de soporte tecnico en software quieres ver? visita nuestra pagina<a href="index.html" class="btn-soportes">SOPORTE TECNICO EDU STORE</a></p>
+      .</p> .</p>
+    </div>
+  </section>
+</div>
+</div>
+    </div>
+    <section class="about-section"  id="acerca" style="max-width: 900px; margin: 60px auto; padding: 30px; background: #ffffff; border-radius: 10px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
+      <h2 style="font-size: 2rem; margin-bottom: 20px;">Acerca de Nosotros</h2>
+    
+      <p><strong>Bienvenido a EDU STORE</strong>, tu destino en línea para productos de calidad, atención personalizada y una experiencia de compra segura y con buena atencion al cliente con soporte tecnico o remoto.</p>
+    
+      <h3 style="margin-top: 25px;">¿Quiénes somos?</h3>
+      <p>Somos una empresa comprometida con la innovación, la excelencia y la satisfacción total de nuestros clientes. Nacimos con la idea de ofrecer productos y servicios seleccionados con cuidado, asegurando calidad, buen precio y un servicio confiable.</p>
+    
+      <h3 style="margin-top: 25px;">Nuestra historia</h3>
+      <p>Todo comenzó en aquel tiempo con un grupo de amigos, un grupo de apasionados por la tecnología, el diseño y la atención al cliente decidimos lanzar una tienda en línea diferente. Con el paso del tiempo hemos crecido, pero seguimos manteniendo nuestros valores originales: honestidad, cercanía y compromiso.</p>
+    
+      <h3 style="margin-top: 25px;">Lo que nos diferencia</h3>
+      <ul style="margin-left: 20px;">
+        <li>✅ Productos seleccionados y de alta calidad</li>
+        <li>✅ Atención rápida y personalizada</li>
+        <li>✅ Envíos seguros y rápidos a todo el país</li>
+        <li>✅ Garantía de satisfacción y soporte postventa</li>
+      </ul>
+    
+      <h3 style="margin-top: 25px;">Nuestra misión</h3>
+      <p>Queremos que comprar en línea sea una experiencia fácil, agradable y confiable. Por eso nos enfocamos en cada detalle, desde la selección de productos hasta el soporte que brindamos después de la compra.</p>
+    
+      <h3 style="margin-top: 25px;">Visión a futuro</h3>
+      <p>Nos proyectamos como una marca referente en comercio electrónico a nivel nacional e internacional, siempre escuchando a nuestros clientes y mejorando cada día para ofrecerte lo mejor.</p>
+    
+      <h3 style="margin-top: 25px;">Contáctanos</h3>
+      <p>¿Tienes preguntas o sugerencias? Nos encantaría escucharte. Puedes contactarnos por correo, redes sociales o a través del formulario en la sección de .<a href="redes sociales.html" class="btn-soportes">Contacto</a></p>
+    
+      <p style="margin-top: 40px; font-weight: bold;">Gracias por confiar en nosotros y ser parte de nuestra comunidad.</p>
+      <footer>
+        &copy; EDU STORE | Todos los derechos reservados
+    </footer>
+    </section>
+    
+
+  <section class="section" id="contacto">
+    <h2>Contacto</h2>
+    <div class="boton-soporte">
+      <a href="index.html" class="btn-soportes">Contactar a Soporte Tecnico</a>
+      <script>
+        const headers = document.querySelectorAll('.accordion-header');
+      
+        headers.forEach(header => {
+          header.addEventListener('click', () => {
+            const body = header.nextElementSibling;
+            const isActive = header.classList.contains('active');
+      
+            // Cierra todos
+            document.querySelectorAll('.accordion-body').forEach(b => b.style.maxHeight = null);
+            document.querySelectorAll('.accordion-header').forEach(h => h.classList.remove('active'));
+      
+            // Abre solo si no estaba activo
+            if (!isActive) {
+              header.classList.add('active');
+              body.style.maxHeight = body.scrollHeight + 'px';
+            }
+          });
+        });
+      </script>
+      
+     

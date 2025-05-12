@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Carrito de Compras</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      background: #f4f4f4;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    .carrito {
+      max-width: 800px;
+      margin: auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .producto {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 10px;
+    }
+
+    .producto img {
+      width: 80px;
+      margin-right: 20px;
+      border-radius: 5px;
+    }
+
+    .info {
+      flex: 1;
+    }
+
+    .acciones {
+      text-align: right;
+    }
+
+    .acciones button {
+      margin: 0 5px;
+      padding: 5px 10px;
+      border: none;
+      background: #007bff;
+      color: #fff;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    .acciones button.eliminar {
+      background: #dc3545;
+    }
+
+    .total {
+      text-align: right;
+      font-size: 1.2em;
+      margin-top: 20px;
+      font-weight: bold;
+    }
+
+    .resumen {
+      margin-top: 30px;
+      text-align: right;
+    }
+
+    .resumen p {
+      font-size: 1.1em;
+      margin: 5px 0;
+    }
+
+    .resumen button {
+      background: #28a745;
+      padding: 10px 20px;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .btn-soporte {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 14px 24px;
+    background-color: #00ff40;
+    color: #fff;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.btn-soporte:hover {
+    background-color: #c6c6c6;
+} 
+.boton-soporte {
+      background-color: #aaadaa; /* Verde */
+      border: none;
+      color: white;
+      padding: 15px 30px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="carrito">
+    <h1>Tu Carrito</h1>
+    <div id="lista-carrito"></div>
+
+    <div class="resumen">
+      <p>Total de productos: <span id="total-cantidad">0</span></p>
+      <p>Total a pagar: $<span id="total-precio">0</span> MXN</p>
+      <a href="checkout.html" class="btn-soporte" title="Comprar todo">
+      
+        <span class="cart-count"></span>
+      </a>
+    </div>
+  </div>
+
+  <script>
+    let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+    const contenedor = document.getElementById("lista-carrito");
+    const totalCantidad = document.getElementById("total-cantidad");
+    const totalPrecio = document.getElementById("total-precio");
+
+    function renderizarCarrito() {
+      contenedor.innerHTML = "";
+      let total = 0;
+      let cantidadTotal = 0;
+
+      carrito.forEach((producto, index) => {
+        const div = document.createElement("div");
+        div.className = "producto";
+
+        const subtotal = producto.precio * producto.cantidad;
+        total += subtotal;
+        cantidadTotal += producto.cantidad;
+
+        div.innerHTML = `
+          <img src="${producto.imagen}" alt="${producto.nombre}">
+          <div class="info">
+            <h3>${producto.nombre}</h3>
+            <p>Precio: $${producto.precio} MXN</p>
+            <p>Cantidad: ${producto.cantidad}</p>
+            <p>Subtotal: $${subtotal} MXN</p>
+          </div>
+          <div class="acciones">
+            <button onclick="cambiarCantidad(${index}, 1)">➕</button>
+            <button onclick="cambiarCantidad(${index}, -1)">➖</button>
+            <button class="eliminar" onclick="eliminarProducto(${index})">Eliminar</button>
+          </div>
+        `;
+
+        contenedor.appendChild(div);
+      });
+
+      totalCantidad.textContent = cantidadTotal;
+      totalPrecio.textContent = total;
+      localStorage.setItem("carrito", JSON.stringify(carrito));
+    }
+
+    function cambiarCantidad(index, cambio) {
+      carrito[index].cantidad += cambio;
+      if (carrito[index].cantidad < 1) carrito[index].cantidad = 1;
+      renderizarCarrito();
+    }
+
+    function eliminarProducto(index) {
+      carrito.splice(index, 1);
+      renderizarCarrito();
+    }
+
+    function finalizarCompra() {
+      if (carrito.length === 0) {
+        alert("Tu carrito está vacío.");
+        return;
+      }
+      alert("¡Gracias por tu compra!");
+      carrito = [];
+      localStorage.removeItem("carrito");
+      renderizarCarrito();
+    }
+
+    // Iniciar
+    renderizarCarrito();
+  </script>
+
+</body>
+</html>
